@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Бабкин внук — Игры, подписки и донаты</title>
+<meta name="description" content="PS4/PS5: игры, подписки и донаты. Реальные товары и цены. Выдача 5–10 минут, поддержка и гарантия. Контакты и реквизиты ИП на сайте." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1022; --panel:#0f1638; --muted:#c9d6fb; --text:#f5f7ff;
+  --tg:#23a6f0; --wb:#8a2be2; --av:#2d5be3;
+  --radius:18px; --shadow:0 18px 54px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:60;background:rgba(11,16,34,.7);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid #23325d}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+.brand img{width:48px;height:48px;border-radius:12px;object-fit:cover;border:1px solid #2a3b6c;box-shadow:var(--shadow)}
+.menu{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.menu a{color:var(--muted);font-weight:700}
+.btn{display:inline-flex;gap:10px;align-items:center;padding:14px 20px;border-radius:16px;font-weight:800;position:relative;transition:transform .15s ease, filter .15s ease, box-shadow .15s ease}
+.btn::before{content:"";position:absolute;left:0;right:0;top:0;height:52%;border-top-left-radius:16px;border-top-right-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.28),transparent)}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.btn-tg{background:linear-gradient(180deg,#55c3ff,#1b9fe7);box-shadow:0 14px 40px rgba(39,170,255,.35);color:#fff}
+.btn-wb{background:linear-gradient(180deg,#bb6bff,#8a2be2);box-shadow:0 14px 40px rgba(158,79,255,.35);color:#fff}
+.btn-av{background:linear-gradient(180deg,#6fa2ff,#2a5eea);box-shadow:0 14px 40px rgba(60,120,255,.35);color:#fff}
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(700px 400px at 10% 10%, #2d6bff22, transparent 60%),radial-gradient(700px 400px at 90% 10%, #8a2be222, transparent 60%),radial-gradient(800px 500px at 60% 90%, #23a6f022, transparent 60%);}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:80px 0}
+.headline{font-size:clamp(48px,5vw,64px);line-height:1.04;margin:0 0 14px;font-weight:900;letter-spacing:-.02em;background:linear-gradient(90deg,#fff,#d5e7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:62ch;margin:0 0 24px}
+.hero-card{background:linear-gradient(180deg,#151e47,#0d1432 60%);border:1px solid #25356b;border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.hero-card img{aspect-ratio:4/3;object-fit:cover;border-bottom:1px solid #25356b}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.badge{display:inline-flex;gap:6px;align-items:center;background:#10183a;border:1px solid #2a3b6c;color:var(--muted);padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.badge strong{color:var(--text)}
+section{padding:80px 0} .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}
+.section-head h2{margin:0;font-size:clamp(28px,3.2vw,36px)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:rgba(255,255,255,.06);border:1px solid #2a3b6c;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 22px 64px rgba(0,0,0,.5);border-color:rgba(255,255,255,.3)}
+.card img{aspect-ratio:4/3;object-fit:cover;filter:saturate(1.05)}
+.card .p{padding:20px}
+.price{display:flex;align-items:center;justify-content:space-between;font-weight:800}
+.meta{color:var(--muted);font-size:14px;margin-top:10px}
+.pill{display:inline-block;font-size:12px;font-weight:700;background:rgba(255,255,255,.06);border:1px solid #2a3b6c;padding:8px 12px;border-radius:999px;margin-right:8px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:rgba(255,255,255,.06);border:1px solid #2a3b6c;border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+.step h3{margin-top:8px}
+.notice{font-size:14px;color:#b8ffe9;background:#10b9811a;border:1px dashed #10b98166;border-radius:14px;padding:12px;margin-top:14px}
+footer{padding:80px 0;color:#c1ccec;border-top:1px solid #23325d} .foot{display:flex;gap:22px;justify-content:space-between;flex-wrap:wrap}
+.links a{margin-right:14px;display:inline-flex;gap:6px;align-items:center}
+@media (max-width: 980px){.hero-grid{grid-template-columns:1fr} .grid,.steps{grid-template-columns:1fr 1fr}}
+@media (max-width: 640px){.menu{gap:10px} .grid,.steps{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="/logo.jpg" alt="Бабкин внук логотип">
+      <div>Бабкин внук</div>
+    </div>
+    <nav class="menu">
+      <a href="#catalog">Каталог</a>
+      <a href="#delivery">Как получить</a>
+      <a href="#offer">Оферта</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="actions">
+      <a class="btn btn-tg" href="tel:+79782931677">Позвонить</a>
+      <a class="btn btn-av" href="mailto:zizu.13@yandex.ru">Написать</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1 class="headline">Игры и подписки для PS4/PS5 — быстро и безопасно</h1>
+      <p class="sub">Реальные товары и цены. Выдача за 5–10 минут после оплаты. Поддержка и гарантия на срок подписки.</p>
+      <div class="badges">
+        <div class="badge"><strong>Скидки до 95%</strong> на цифровые релизы</div>
+        <div class="badge">1000+ отзывов</div>
+      </div>
+      <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-av" href="#catalog">В каталог</a>
+        <a class="btn btn-wb" href="#delivery">Как это работает</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img src="/hero.jpg" alt="Витрина цифровых товаров">
+      <div class="p">
+        <div class="price"><span>Горящие предложения</span><span>от 490 ₽</span></div>
+        <div class="meta">EA SPORTS FC 25, GTA V, PS Plus Extra/Deluxe и другое</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КАТАЛОГ: реальные товары -->
+<section id="catalog">
+  <div class="container">
+    <div class="section-head">
+      <h2>Каталог</h2>
+      <div>
+        <span class="pill">Цифровые товары</span>
+        <span class="pill">Моментальная выдача</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <img src="/images/ps-plus-12.jpg" alt="PlayStation Plus Deluxe — 12 месяцев" loading="lazy">
+        <div class="p">
+          <div class="price"><span>PS Plus Deluxe — 12 мес</span><span>1 990 ₽</span></div>
+          <div class="meta">Официальная подписка для PS4/PS5. Аккаунт/код с инструкцией, поддержка на весь срок.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/images/ps-plus-extra-3.jpg" alt="PlayStation Plus Extra — 3 месяца" loading="lazy">
+        <div class="p">
+          <div class="price"><span>PS Plus Extra — 3 мес</span><span>990 ₽</span></div>
+          <div class="meta">Доступ к каталогу Extra. Быстрая активация, помощь при вопросах.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/images/fc25-ps5.jpg" alt="EA SPORTS FC 25 — PS5 (цифровая версия)" loading="lazy">
+        <div class="p">
+          <div class="price"><span>EA SPORTS FC 25 — PS5</span><span>990 ₽</span></div>
+          <div class="meta">Цифровая версия (RU). Выдача ключа/аккаунта сразу после оплаты.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/images/gta5-ps5.jpg" alt="GTA V — PS5 (RU)" loading="lazy">
+        <div class="p">
+          <div class="price"><span>GTA V — PS5 (RU)</span><span>690 ₽</span></div>
+          <div class="meta">Лицензионный ключ или доступ к аккаунту. Инструкция по активации включена.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/images/mw3-ps5.jpg" alt="Call of Duty: Modern Warfare III — PS5" loading="lazy">
+        <div class="p">
+          <div class="price"><span>Call of Duty: MW III — PS5</span><span>1 490 ₽</span></div>
+          <div class="meta">Цифровой релиз для PS5. Выдача доступа/ключа в течение 5–10 минут.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/images/psn-topup.jpg" alt="Пополнение кошелька PSN (RUB)" loading="lazy">
+        <div class="p">
+          <div class="price"><span>Пополнение кошелька PSN</span><span>от 100 ₽</span></div>
+          <div class="meta">Номиналы на выбор. Удобно для покупок в PS Store.</div>
+        </div>
+      </article>
+    </div>
+
+    <p class="notice">Важно: все товары — цифровые. Обложки/логотипы принадлежат их правообладателям.</p>
+  </div>
+</section>
+
+<!-- КАК ПОЛУЧИТЬ (цифровая доставка) -->
+<section id="delivery">
+  <div class="container">
+    <div class="section-head"><h2>Как получить заказ</h2></div>
+    <div class="steps">
+      <div class="step">
+        <h3>1. Выбор и оплата</h3>
+        <p>Вы выбираете товар в каталоге и подтверждаете покупку. Оплата банковской картой/СБП или иным доступным способом.</p>
+      </div>
+      <div class="step">
+        <h3>2. Моментальная выдача</h3>
+        <p>В течение 5–10 минут после оплаты мы отправляем ключ/аккаунт и инструкцию на e‑mail или в мессенджер.</p>
+      </div>
+      <div class="step">
+        <h3>3. Поддержка и гарантия</h3>
+        <p>Помогаем с активацией. Гарантия на срок подписки/доступа. Возврат — если код/доступ не передан или неработоспособен по нашей вине.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ОФЕРТА (встраиваемый блок + отдельная страница) -->
+<section id="offer">
+  <div class="container">
+    <div class="section-head">
+      <h2>Пользовательское соглашение (Публичная оферта)</h2>
+      <a class="btn btn-tg" href="/offer.html">Открыть полную версию</a>
+    </div>
+    <div class="step">
+      <p><strong>ИП Рыбников Кирилл Вадимович</strong> (ИНН 631609525097, ОГРНИП 325930100015218) предлагает заключить договор купли‑продажи цифровых товаров. Оплата означает согласие с условиями оферты. Передача товара — электронно (код/доступ) обычно в течение 5–10 минут, максимум — до 2 часов. Гарантия на срок подписки/доступа; возврат возможен, если товар не был передан или код/доступ неработоспособен по вине продавца и не может быть заменён.</p>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ И РЕКВИЗИТЫ -->
+<section id="contacts">
+  <div class="container">
+    <div class="section-head"><h2>Контакты и реквизиты</h2></div>
+    <div class="steps">
+      <div class="step">
+        <p><strong>ИП Рыбников Кирилл Вадимович</strong><br>
+        ИНН: 631609525097<br>
+        ОГРНИП: 325930100015218</p>
+        <p>Телефон: <a href="tel:+79782931677">+7 (978) 293‑16‑77</a><br>
+        E‑mail: <a href="mailto:zizu.13@yandex.ru">zizu.13@yandex.ru</a></p>
+      </div>
+      <div class="step">
+        <p><strong>Юридический адрес:</strong><br>
+        284630, РОССИЯ, РЕСП ДОНЕЦКАЯ НАРОДНАЯ, г. Горловка,<br>
+        ул. Яковенко, д. 25</p>
+        <p class="meta">Режим работы: ежедневно 10:00–22:00 (МСК). Дата обновления: 25.08.2025.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div>© 2023–2025 «Бабкин внук». Все права защищены.</div>
+    <div class="links">
+      <a href="#offer">Оферта</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<!-- JSON-LD: организация и товары -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Бабкин внук",
+  "url": "https://babkinvnuk-landing.vercel.app/",
+  "email": "zizu.13@yandex.ru",
+  "telephone": "+7-978-293-16-77",
+  "legalName": "ИП Рыбников Кирилл Вадимович",
+  "taxID": "631609525097",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "284630",
+    "addressCountry": "RU",
+    "addressRegion": "Республика Донецкая Народная",
+    "addressLocality": "Горловка",
+    "streetAddress": "ул. Яковенко, д. 25"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "PlayStation Plus Deluxe — 12 мес",
+      "image": "/images/ps-plus-12.jpg",
+      "description": "Официальная подписка для PS4/PS5. Аккаунт/код с инструкцией, поддержка на весь срок.",
+      "brand": "PlayStation",
+      "offers": {"@type": "Offer","price": "1990","priceCurrency": "RUB","availability": "https://schema.org/InStock"}
+    },
+    {
+      "@type": "Product",
+      "name": "EA SPORTS FC 25 — PS5",
+      "image": "/images/fc25-ps5.jpg",
+      "description": "Цифровая версия для PS5 (RU). Выдача ключа/аккаунта после оплаты.",
+      "brand": "EA SPORTS",
+      "offers": {"@type": "Offer","price": "990","priceCurrency": "RUB","availability": "https://schema.org/InStock"}
+    }
+  ]
+}
+</script>
+</body>
+</html>
